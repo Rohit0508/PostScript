@@ -47,10 +47,10 @@ function Navbar(props) {
               <a href="./write">Write</a>
             </li>
             <li className="list">
-              <a href="./signup">JoinUs</a>
+              <a href="./Signup">JoinUs</a>
             </li>
             <li className="list">
-              <a href="./login">SignIn</a>
+              <a href="./Login">SignIn</a>
             </li>
             
             {windowSize <= 998 && (
