@@ -1,14 +1,10 @@
-import react , {useState} from 'react'
+import React , {useState} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
-// import './components1.css'
-// import './components2.css'
 import {MdEmail} from 'react-icons/md'
 import {RiLockPasswordFill} from 'react-icons/ri'
-import Navbar from './navbar'
-import Footer from './footer'
+
 
 function Login(){
-
     const navigate = useNavigate() ;
 
     const [user,setUser] = useState({
@@ -33,8 +29,9 @@ let name , value ;
 
         console.log("Yes") ;
 
-        const res = await fetch('/login',{
+        const res = await fetch('http://localhost:4000/api/v1/login',{
             method : "POST" ,
+            mode:"cors",
             headers : {
                 "Content-type" : "application/json"
             },
@@ -51,13 +48,12 @@ let name , value ;
         else{
             window.alert('Login Successful') ;
             console.log('Production') ;
-            navigate('/') ;
+            navigate('/blog') ;
         }
     }
 
     return (
         <>
-        {/*<div className='search-local' style={{backgroundColor:'rgb(135, 206, 235)', height:'100vh'}}>*/}
             <div className='center-card' style={{margin:'10%',width:'60%',margin:'auto',marginTop:'10%',marginBottom:'10%'}}>
                 <div className='Contact-2'>
                 <h2 style={{color : 'rgba(31,72,125,1)'}}>

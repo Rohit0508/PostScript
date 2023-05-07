@@ -1,6 +1,4 @@
 import react , {useState} from 'react'
-// import './components1.css'
-// import './components2.css'
 import { NavLink , useNavigate} from 'react-router-dom';
 import Login from './login';
 import {IoIosPerson} from 'react-icons/io'
@@ -8,8 +6,6 @@ import {MdLocationCity} from 'react-icons/md'
 import {MdEmail} from 'react-icons/md'
 import {BsFillTelephoneFill} from 'react-icons/bs'
 import {RiLockPasswordFill} from 'react-icons/ri'
-import Navbar from './navbar'
-import Footer from './footer'
 
 function Signup(){
 
@@ -19,7 +15,7 @@ function Signup(){
             email:"",
             phone:"",
             password:"",
-            cpassword:"",
+            cpassword:""
     });
 
     let name , value ;
@@ -36,15 +32,15 @@ function Signup(){
     const postData = async (e) => {
         e.preventDefault() ;
 
-        const {name, email, phone, password, cpassword} = user ;
+        const {name, email, password} = user ;
 
-        const res = await fetch("/register",{
+        const res = await fetch("http://localhost:4000/api/v1/signup",{
             method : "POST" ,
             headers : {
                 "Content-type" : "application/json"
             },
             body : JSON.stringify({
-                name, email, phone, password, cpassword 
+                name, email,  password
             })
         }) ;
 
@@ -63,7 +59,7 @@ function Signup(){
     }
     return (
         <>
-        <Navbar/>
+       
         <div className='center-card' style={{margin:'10%',width:'60%',margin:'auto',marginTop:'10%',marginBottom:'10%'}}>
                 <div className='Contact-2'>
                     <h2 style={{color : 'rgba(31,72,125,1)'}}>
@@ -78,6 +74,9 @@ function Signup(){
                 <IoIosPerson/>
                 <input type={Text}  autoComplete='off' name='name' id='name'  value={user.name} onChange={handleInputs}></input>
                 <br/>
+                <label>City<span style={{color:'red'}}>*</span></label>
+                <br/>
+                <MdLocationCity/>
                 <input type={Text}  autoComplete='off' name='city' id='city' value={user.city} onChange={handleInputs}></input>
                 <br/>
                 <label>Email<span style={{color:'red'}}>*</span></label>
@@ -103,10 +102,10 @@ function Signup(){
                 <br/>
                 <button type='Submit' name='signup' id='signup' className='Button-2' value='register' onClick={postData}>Register</button>
                 </form>
-                <a href='./Login' style={{textDecoration:'none',color:'rgba(31,72,125,1)'}}>Already Registered ?</a>
+                <a href='./login' style={{textDecoration:'none',color:'rgba(31,72,125,1)'}}>Already Registered ?</a>
                 </div>
             </div>
-        <Footer/>
+        
         </>
     );
 }

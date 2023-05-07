@@ -8,7 +8,7 @@
   height : 8rem ;
   display: grid ;
   grid-template-columns: 8rem 1fr 3fr 8rem ;
-  background-color: rgba(31,72,125,1);
+  background-color: #FFC017;
   box-shadow: rgba(50,50,93,0.25) 0px 50px 100px -20px , rgba(0,0,0,0.3) 0px 30px 60px -30px;
 }
 .navbar{
@@ -23,7 +23,7 @@ li{
 }
 
 .Main{
-  color: white;
+  color: rgb(72, 71, 71);
   display: grid ;
   grid-column : 2/3;
   align-items: center ;
@@ -43,7 +43,7 @@ li{
   transition: 0.5s;
 }
 .ListDiv ul li a{
-  color : white ;
+  color : rgb(33, 32, 32) ;
   text-decoration: none;
   font-size: 1.2rem;
 }
@@ -58,11 +58,11 @@ li{
 }
 .sidebar {
   position: fixed;
-  top: 175px; 
+  top: 128px; 
   left: -300px;
   width: 300px;
   height: 100%;
-  background-color: rgba(31,190,255,0.73);
+  background-color: #FFC017;
   z-index: 999;
   transition: all 0.3s ease-in-out;
 }
@@ -80,7 +80,7 @@ li{
 }
 
 .sidebar ul li a {
-  color: #fff;
+  color: #343333;
   text-decoration: none;
   font-size: 20px;
 
@@ -132,7 +132,7 @@ li{
 /* Footer design *************************************   */
 .social-container {
   text-align: center;
-  background: #adaaaa;
+  background: #cacac7;
   padding: 25px 50px;
   /* position:absolute; */
   bottom: 0;
@@ -166,3 +166,24 @@ a.instagram {
   margin-top: 50px;
 
 }
+
+/* home page CSS**************************      .......... */
+.home-container{
+  height: 50vh;
+  background-image: url("./components/images/wepik-export-20230504112114.png");
+  background-size: cover;
+}
+.blogs{
+  overflow: scroll;
+  display: flex;
+  text-align: left;
+  height: 100vh;
+}
+.blog-container{
+  display: flex;
+}
+.sidecontainer{
+  background-color: #4d56d7;
+}
+
+/* .link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; } */

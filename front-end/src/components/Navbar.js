@@ -1,11 +1,7 @@
 import { React, useEffect, useState } from 'react';
-
-import { BiLogIn } from 'react-icons/bi';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-function Navbar(props) {
-  let isLoggedIn = false;
-  if (props.userData != null) isLoggedIn = true;
+function Navbar() {
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
@@ -41,16 +37,16 @@ function Navbar(props) {
         <div className="ListDiv">
           <ul className="Navbar-List">
             <li className="list">
-              <a href="/about">AboutUs</a>
+              <a href="./about">AboutUs</a>
             </li>
             <li className="list">
-              <a href="./write">Write</a>
+              <a href="./login">Write</a>
             </li>
             <li className="list">
-              <a href="./Signup">JoinUs</a>
+              <a href="./signup">JoinUs</a>
             </li>
             <li className="list">
-              <a href="./Login">SignIn</a>
+              <a href="./login">SignIn</a>
             </li>
             
             {windowSize <= 998 && (
@@ -66,21 +62,19 @@ function Navbar(props) {
 
         <div className="sidebar">
           <ul>
-            <li>
-              <a href="/">Home</a>
+          <li >
+              <a href="./about">AboutUs</a>
             </li>
-            <li>
-              <a href="./cities">Cities</a>
+            <li >
+              <a href="./write">Write</a>
             </li>
-            <li>
-              <a href="./AboutUs">About Us</a>
+            <li >
+              <a href="./signup">JoinUs</a>
             </li>
-            <li>
-              <a href="./partner">For PG Owners</a>
+            <li >
+              <a href="./login">SignIn</a>
             </li>
-            <li>
-              <a href="./ContactUs">Contact Us</a>
-            </li>
+           
           </ul>
         </div>
       </nav>

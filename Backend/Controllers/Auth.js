@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const { options } = require("../routes/user");
 require("dotenv").config();
 
 
@@ -9,7 +8,7 @@ require("dotenv").config();
 exports.signup = async (req,res) => {
     try{
         //get data
-        const {name, email, password, role} = req.body;
+        const {name, email, password} = req.body;
         //check if user already exist
         const existingUser = await User.findOne({email});
 
@@ -34,7 +33,7 @@ exports.signup = async (req,res) => {
 
         //create entry for User
         const user = await User.create({
-            name,email,password:hashedPassword,role
+            name,email,password:hashedPassword
         })
 
         return res.status(200).json({
