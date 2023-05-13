@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
 import {MdEmail} from 'react-icons/md'
 import {RiLockPasswordFill} from 'react-icons/ri'
@@ -11,6 +11,13 @@ function Login(){
         email:"",
         password:"",
     });
+    useEffect(() => {
+        const auth = localStorage.getItem('user');//to check wether the user is already signedup or not 
+        //while loading the page
+        if (auth) {
+            navigate('/blog')
+        }
+    }, []);
 
 let name , value ;
 
@@ -46,7 +53,7 @@ let name , value ;
             window.alert('Invalid Credentials') ;
         }
         else{
-            
+            localStorage.setItem("user", JSON.stringify(data));
             window.alert('Login Successful') ;
             console.log('Production') ;
             navigate('/blog') ;

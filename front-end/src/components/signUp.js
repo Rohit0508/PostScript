@@ -1,4 +1,4 @@
-import react , {useState} from 'react'
+import react , {useState,useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
 import Login from './login';
 import {IoIosPerson} from 'react-icons/io'
@@ -10,6 +10,15 @@ import {RiLockPasswordFill} from 'react-icons/ri'
 function Signup(){
 
     const navigate = useNavigate() ;
+
+    useEffect(() => {
+        const auth = localStorage.getItem('user');//to check wether the user is already signedup or not 
+        //while loading the page
+        if (auth) {
+            navigate('/blog')
+        }
+    }, []);
+
     const [user,setUser] = useState({
             name:"",
             email:"",
