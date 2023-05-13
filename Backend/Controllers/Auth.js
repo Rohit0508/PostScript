@@ -22,6 +22,11 @@ exports.signup = async (req,res) => {
         //secure password
         let hashedPassword;
         try{
+            if(!password)
+            return res.status(500).json({
+                success:false,
+                message:'Error inn  Password',
+            });
             hashedPassword = await bcrypt.hash(password, 10);
         }
         catch(err) {

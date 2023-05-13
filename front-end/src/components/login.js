@@ -41,11 +41,12 @@ let name , value ;
         });
 
         const data = await res.json() ;
-
-        if(res.status === 400 || !data){
+        console.log(data.success);
+        if(data.success==false || !data){
             window.alert('Invalid Credentials') ;
         }
         else{
+            
             window.alert('Login Successful') ;
             console.log('Production') ;
             navigate('/blog') ;
