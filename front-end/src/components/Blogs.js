@@ -13,7 +13,7 @@ import {
 import Navbar2 from "./Navbar2";
 export default function DisplayBlogs() {
   return (
-    <><Navbar2 /><div className="blog-container">
+    <><div className="blog-container">
       <div className="blogs">
         <section>
           <MDBContainer className="py-5" style={{ maxWidth: "1000px" }}>

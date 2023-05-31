@@ -2,7 +2,7 @@ import React , {useState,useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
 import {MdEmail} from 'react-icons/md'
 import {RiLockPasswordFill} from 'react-icons/ri'
-
+import Navbar from './Navbar';
 
 function Login(){
     const navigate = useNavigate() ;
@@ -62,6 +62,7 @@ let name , value ;
 
     return (
         <>
+        <Navbar/>
             <div className='center-card' style={{margin:'10%',width:'60%',margin:'auto',marginTop:'10%',marginBottom:'10%'}}>
                 <div className='Contact-2'>
                 <h2 style={{color : 'rgba(31,72,125,1)'}}>

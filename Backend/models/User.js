@@ -14,6 +14,25 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+    },
+    phone:{
+        type:String
+    },
+
+    address:{
+        type:String
+    },
+    college:{
+        type:String
+    },
+    postImage:{
+        type:String    
+    },
+    linkedin:{
+        type:String
+    },
+    github:{
+        type:String
     }
     
 },

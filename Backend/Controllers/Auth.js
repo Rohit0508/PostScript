@@ -1,6 +1,13 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const cors = require('cors');
+const express = require('express');
+const app = express();
+
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add 'PUT' to the allowed methods
+}));
 require("dotenv").config();
 
 
@@ -8,7 +15,8 @@ require("dotenv").config();
 exports.signup = async (req,res) => {
     try{
         //get data
-        const {name, email, password} = req.body;
+        const {name, email, password,phone,
+            address,college,linkedin,github,postImage} = req.body;
         //check if user already exist
         const existingUser = await User.findOne({email});
 
@@ -38,7 +46,9 @@ exports.signup = async (req,res) => {
 
         //create entry for User
         const user = await User.create({
-            name,email,password:hashedPassword
+           name, phone,
+            address,college,linkedin,
+            github,postImage,email,password:hashedPassword
         })
 
         return res.status(200).json({
@@ -131,3 +141,32 @@ exports.login = async (req,res) => {
 
     }
 }
+
+// SAVE USER PAGE INFORMATION
+
+exports.saveinfo=async(req,resp)=>{
+        let result =await User.findOne({email:req.params.id});
+    if(result){
+
+        let updatedresult = await User.updateOne(
+            {email:req.params.id},
+            {
+                $set: req.body
+            }
+        )
+        resp.send("updated");
+    }
+    else{
+        resp.send("profile does not matched");
+    } 
+}
+// retrieve info from database.......
+exports.getdetails=async(req,resp)=>{
+    let result =await User.findOne({email:req.params.id});
+    if (result) {
+        resp.send(result);
+    }
+    else {
+        resp.send({ result: "no record found" });
+    }
+};

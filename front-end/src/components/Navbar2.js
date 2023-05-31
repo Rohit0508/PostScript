@@ -8,6 +8,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from "react-router-dom";
 const Navbar2=()=>{
     const navigate=useNavigate();
+    let auth =localStorage.getItem("user");
+    auth=JSON.parse(auth)
+    console.log(auth.user.email);
     const logout=()=>{ //to logout and clear data from localstorage
         localStorage.clear();
         navigate('/login'); //alternate way to redirect on sign up page
@@ -23,19 +26,10 @@ const Navbar2=()=>{
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href="#action1">Home</Nav.Link>
+                <Nav.Link href="/blog">Blogs</Nav.Link>
+                <Nav.Link href="/write">Write</Nav.Link>
                 
-                <NavDropdown title="Link" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="./profile" >
+                <Nav.Link href={`/profile/${auth.user.email}`} >
                   Profile
                 </Nav.Link>
                 <Nav.Link onClick={logout} href="#" >

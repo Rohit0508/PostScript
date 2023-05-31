@@ -1,11 +1,10 @@
 import react , {useState,useEffect} from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
-import Login from './login';
 import {IoIosPerson} from 'react-icons/io'
-import {MdLocationCity} from 'react-icons/md'
 import {MdEmail} from 'react-icons/md'
-import {BsFillTelephoneFill} from 'react-icons/bs'
-import {RiLockPasswordFill} from 'react-icons/ri'
+import {RiLockPasswordFill} from 'react-icons/ri';
+import Navbar from './Navbar';
+
 
 function Signup(){
 
@@ -22,8 +21,9 @@ function Signup(){
     const [user,setUser] = useState({
             name:"",
             email:"",
-           
-            password:""
+            password:"",
+            phone:"",
+            address:"",linkedin:"",github:"",postImage:"",college:""
             
     });
 
@@ -41,7 +41,8 @@ function Signup(){
     const postData = async (e) => {
         e.preventDefault() ;
 
-        const {name, email, password} = user ;
+        const {name, email, password,phone,
+            address,college,linkedin,github,postImage} = user ;
 
         const res = await fetch("http://localhost:4000/api/v1/signup",{
             method : "POST" ,
@@ -49,7 +50,8 @@ function Signup(){
                 "Content-type" : "application/json"
             },
             body : JSON.stringify({
-                name, email,  password
+                name, email,  password,phone,
+                address,college,linkedin,github,postImage
             })
         }) ;
         
@@ -68,7 +70,7 @@ function Signup(){
     }
     return (
         <>
-       
+       <Navbar />
         <div className='center-card' style={{margin:'10%',width:'60%',margin:'auto',marginTop:'10%',marginBottom:'10%'}}>
                 <div className='Contact-2'>
                     <h2 style={{color : 'rgba(31,72,125,1)'}}>
