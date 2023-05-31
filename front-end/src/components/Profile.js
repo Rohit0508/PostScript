@@ -106,26 +106,38 @@ const Profile = () => {
     // api integration to save entered details................ 
     const savedetail = async () => {
         console.warn(name, email, phone, college, address, linkedin, github);
-        let result = await fetch(`http://localhost:4000/api/v1/profile/${params.id}`, {
-            method: "Put",
+        try {
+          let result = await fetch(`http://localhost:4000/api/v1/profile/${params.id}`, {
+            method: "PUT",
             body: JSON.stringify({
-                name, email, phone, college, address, linkedin, github,
-                postImage
+              name,
+              email,
+              phone,
+              college,
+              address,
+              linkedin,
+              github,
+              postImage,
             }),
             headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-        result = await result.json();
-        console.warn(result);
+              "Content-Type": "application/json",
+            },
+          });
+      
+          if (result.ok) {
+            console.log("Profile updated successfully");
+          } else {
+            console.log("Failed to update profile");
+          }
+        } catch (error) {
+          console.error("Error updating profile:", error);
+        }
+      };
+      
 
         // after saving details to change mode to readonly...............
 
-        var collections = document.getElementsByClassName("common-class");
-        for (let i = 0; i < collections.length; i++) {
-            collections[i].setAttribute("readonly", "");
-        }
-    }
+       
 
     return (
         <><Navbar2 />
