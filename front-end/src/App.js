@@ -13,6 +13,7 @@ import Home from './components/Home';
 import Mainpage from './components/Main';
 import Privatecomp from './components/PrivateComp';
 import Profile from './components/Profile';
+import Display from './components/Display'
 function App() {
 
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
       <Route path='/Login' element={<Login />}/>
       <Route path='/SignUp' element={<Signup/>}/>
+      <Route path='/dummy' element={<Display/>}/>
       </Routes>
 
     </div>
