@@ -14,6 +14,7 @@ import Mainpage from './components/Main';
 import Privatecomp from './components/PrivateComp';
 import Profile from './components/Profile';
 import Display from './components/Display'
+import CreatePost from './components/CreatePost';
 function App() {
 
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path='/Login' element={<Login />}/>
       <Route path='/SignUp' element={<Signup/>}/>
       <Route path='/dummy' element={<Display/>}/>
+      <Route path='/write' element={<CreatePost />}/>
       </Routes>
 
     </div>

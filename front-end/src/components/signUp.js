@@ -57,6 +57,7 @@ function Signup(){
         
         const data = await res.json() ;
         console.log(data);
+        
         if(data.success=== false || !data){
             window.alert("Invalid Registration") ;
             console.log("Invalid Registration") ;

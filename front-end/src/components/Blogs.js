@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useEffect,useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   MDBCard,
@@ -11,7 +11,28 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import Navbar2 from "./Navbar2";
+
 export default function DisplayBlogs() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [totalblogs, setTotalblogs]= useState(0);
+
+  useEffect(() => {
+    getblogs();
+  }, [currentPage]);
+// to get the blogs from backend *************
+    const getblogs=async()=>{
+        let data=await fetch(`http://localhost:4000/api/v1/blogs?page=${currentPage}&pageSize=10`);
+        data= await data.json();
+        console.log(data);
+        
+        setTotalPages(data.totalPages);
+        setTotalblogs(data.totalblogs);
+        
+        
+    }
+   
+
   return (
     <><div className="blog-container">
       <div className="blogs">
@@ -23,57 +44,27 @@ export default function DisplayBlogs() {
 
                   <MDBCardBody className="p-4">
                     <MDBTypography tag="h4" className="mb-0">
-                      Recent posts
+                     Total Blogs: {totalblogs}
                     </MDBTypography>
                     <p className="fw-light mb-4 pb-2">
                       Latest post section by users
                     </p>
 
-                    <div className="d-flex flex-start">
-                      <MDBCardImage
-                        className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-                        alt="avatar"
-                        width="60"
-                        height="60" />
-                      <div>
-                        <MDBTypography tag="h6" className="fw-bold mb-1">
-                          Maggie Marsh
-                        </MDBTypography>
-                        <div className="d-flex align-items-center mb-3">
-                          <p className="mb-0">
-                            March 07, 2021
-                            <span className="badge bg-primary">Pending</span>
-                          </p>
-
-                          <a><MDBIcon fas icon="pencil-alt ms-2" /></a>
-
-                          {/* <a href="#!" className="link-muted">
-      <MDBIcon fas icon="redo-alt ms-2" />
-    </a>
-    <a href="#!" className="link-muted">
-      <MDBIcon fas icon="heart ms-2" />
-    </a> */}
-                        </div>
-                        <p className="mb-0">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the industry's
-                          standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley of type and scrambled it.
-                        </p>
-                      </div>
-                    </div>
+                    
                   </MDBCardBody>
 
                   <hr className="my-0" />
 
                   <hr className="my-0" />
 
+                
+                  
+
                   <MDBCardBody className="p-4">
                     <div className="d-flex flex-start">
                       <MDBCardImage
                         className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
+                        src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
                         alt="avatar"
                         width="60"
                         height="60" />
@@ -113,7 +104,7 @@ export default function DisplayBlogs() {
                     <div className="d-flex flex-start">
                       <MDBCardImage
                         className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
+                        src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
                         alt="avatar"
                         width="60"
                         height="60" />
@@ -153,7 +144,7 @@ export default function DisplayBlogs() {
                     <div className="d-flex flex-start">
                       <MDBCardImage
                         className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
+                        src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
                         alt="avatar"
                         width="60"
                         height="60" />
@@ -193,7 +184,7 @@ export default function DisplayBlogs() {
                     <div className="d-flex flex-start">
                       <MDBCardImage
                         className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
+                        src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png"
                         alt="avatar"
                         width="60"
                         height="60" />

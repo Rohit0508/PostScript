@@ -20,6 +20,12 @@ require("./config/database").connect();
 const user = require("./routes/user");
 app.use("/api/v1", user);
 
+const post = require("./routes/post");
+app.use("/api/v1", post);
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //actuivate
 
 app.listen(PORT, () => {
