@@ -90,6 +90,7 @@ const Profile = () => {
         console.warn(params.id);
         let result = await fetch(`http://localhost:4000/api/v1/profile/${params.id}`
         );
+        // convert this JSON data to javascript object ......
         result = await result.json();
         console.log("hello:",result);
        

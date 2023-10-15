@@ -41,7 +41,7 @@ export default function DisplayBlogs() {
             <MDBRow className="justify-content-center">
               <MDBCol md="12" lg="10">
                 <MDBCard className="text-dark">
-
+        {/* dont alter this Card this is to show total blogs ***** */}
                   <MDBCardBody className="p-4">
                     <MDBTypography tag="h4" className="mb-0">
                      Total Blogs: {totalblogs}
@@ -49,16 +49,13 @@ export default function DisplayBlogs() {
                     <p className="fw-light mb-4 pb-2">
                       Latest post section by users
                     </p>
-
-                    
                   </MDBCardBody>
 
                   <hr className="my-0" />
-
                   <hr className="my-0" />
 
                 
-                  
+                  {/* start from here and use this cardbody fill and map data */}
 
                   <MDBCardBody className="p-4">
                     <div className="d-flex flex-start">
@@ -99,6 +96,7 @@ export default function DisplayBlogs() {
                       </div>
                     </div>
                   </MDBCardBody>
+                  
                   <hr className="my-0" />
                   <MDBCardBody className="p-4">
                     <div className="d-flex flex-start">
